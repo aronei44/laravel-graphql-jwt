@@ -48,6 +48,7 @@ php artisan lighthouse:subscription name
 ```
 etc (see php artisan list)
 
+```
 --app
     | --graphql
     |   | --queries
@@ -56,5 +57,5 @@ etc (see php artisan list)
     |   |   | --yourMutation.php
     |   | --subscriptions
     |   |   | --yourSubs.php
-
+```
 etc
