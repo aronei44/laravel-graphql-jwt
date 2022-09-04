@@ -5,11 +5,17 @@ extend type Query {
 
 extend type Mutation {
     register(form: ReqisterForm! @spread) : User!
+    login(form: LoginForm! @spread) : RespondWithToken!
 }
 
 input ReqisterForm{
     name: String! @rules(apply: ["required","min:8"])
     email: String! @rules(apply: ["required","email:dns","unique:users,email"])
+    password: String! @rules(apply: ["required","min:8"])
+}
+
+input LoginForm{
+    email: String! @rules(apply: ["required","email:dns"])
     password: String! @rules(apply: ["required","min:8"])
 }
 
@@ -21,4 +27,10 @@ type User {
     email_verified_at: DiffTime
     created_at: DiffTime!
     updated_at: DiffTime!
+}
+
+type RespondWithToken {
+    access_token: String
+    token_type: String
+    expires_in: Int
 }
