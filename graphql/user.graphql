@@ -7,9 +7,3 @@ input UserInput{
     name: String @rules(apply: ["nullable"])
     email: String @rules(apply: ["nullable","email:dns"])
 }
-
-type User {
-    id: ID!
-    name: String!
-    email: String!
-}
