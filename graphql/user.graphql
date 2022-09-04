@@ -1,0 +1,15 @@
+extend type Query{
+    users(searchBy: UserInput @spread): [User!]!
+}
+
+input UserInput{
+    id: Int @rules(apply: ["nullable","numeric"])
+    name: String @rules(apply: ["nullable"])
+    email: String @rules(apply: ["nullable","email:dns"])
+}
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+}
