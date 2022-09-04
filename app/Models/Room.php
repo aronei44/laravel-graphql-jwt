@@ -10,11 +10,11 @@ class Room extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    public function userOne() : BelongsTo
+    public function self() : BelongsTo
     {
         return $this->belongsTo(User::class, 'user1id');
     }
-    public function userTwo() : BelongsTo
+    public function opponent() : BelongsTo
     {
         return $this->belongsTo(User::class, 'user2id');
     }
