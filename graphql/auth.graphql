@@ -1,0 +1,24 @@
+scalar DiffTime @scalar(class: "App\\GraphQL\\Scalars\\DiffTime")
+extend type Query {
+    users: [User!]! @all
+}
+
+extend type Mutation {
+    register(form: ReqisterForm! @spread) : User!
+}
+
+input ReqisterForm{
+    name: String! @rules(apply: ["required","min:8"])
+    email: String! @rules(apply: ["required","email:dns","unique:users,email"])
+    password: String! @rules(apply: ["required","min:8"])
+}
+
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    email_verified_at: DiffTime
+    created_at: DiffTime!
+    updated_at: DiffTime!
+}
