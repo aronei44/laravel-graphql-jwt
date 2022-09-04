@@ -3,6 +3,7 @@
 List of content :
 
 - [Auth](https://github.com/aronei44/laravel-graphql-jwt/new/main#auth)
+- [User](https://github.com/aronei44/laravel-graphql-jwt/new/main#user)
 
 ## Auth
 
