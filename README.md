@@ -4,7 +4,25 @@ This BAAS just a learn project for chatting api service with graphql API, JWT au
 
 ## Installation
 
-as simple as install other laravel project :)
+clone this project
+```
+git clone https://github.com/aronei44/laravel-graphql-jwt.git project
+cd project
+```
+
+environment
+```
+composer update
+cp .env.example .env
+php artisan key:generate
+php artisan jwt:secret
+```
+
+fill database information and
+```
+php artisan migrate
+php artisan serve
+```
 
 ## Debug
 
