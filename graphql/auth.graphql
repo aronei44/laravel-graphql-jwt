@@ -1,6 +1,6 @@
 scalar DiffTime @scalar(class: "App\\GraphQL\\Scalars\\DiffTime")
 extend type Query {
-    users: [User!]! @all
+    whoAmI: User @guard @auth
 }
 
 extend type Mutation {
