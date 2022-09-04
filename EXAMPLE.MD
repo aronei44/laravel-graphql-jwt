@@ -52,3 +52,23 @@ query{
   }
 }
 ```
+
+## User 
+
+### Query
+
+- search users by id, name or email
+```graphql
+query{
+  #choice one
+  users(searchBy:{
+    # id:1
+    # name: "tes"
+    email:"ing@gmail.com"
+  }){
+    id
+    name
+    email
+  }
+}
+```
