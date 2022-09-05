@@ -4,6 +4,8 @@ List of content :
 
 - [Auth](https://github.com/aronei44/laravel-graphql-jwt/new/main#auth)
 - [User](https://github.com/aronei44/laravel-graphql-jwt/new/main#user)
+- [Room](https://github.com/aronei44/laravel-graphql-jwt/new/main#room)
+- [Message](https://github.com/aronei44/laravel-graphql-jwt/new/main#message)
 
 ## Auth
 
@@ -73,3 +75,150 @@ query{
   }
 }
 ```
+
+## Room 
+
+### Query
+
+- get all related room
+```graphql
+query{
+  rooms{
+    id
+    self{
+      id
+      name
+      email
+    }
+    opponent{
+      id
+      name
+      email
+    }
+    messages{
+      id
+      body
+      sender{
+        id
+        name
+        email
+      }
+    }
+  }
+}
+```
+
+- get room by id
+```graphql
+query{
+  room(id:3){
+    id
+    self{
+      id
+      name
+      email
+    }
+    opponent{
+      id
+      name
+      email
+    }
+    messages{
+      id
+      body
+      sender{
+        id
+        name
+        email
+      }
+    }
+    error
+  }
+}
+```
+
+### Mutation
+
+- create or check room if existing
+```graphql
+mutation {
+  createNewRoom(form:{
+    opponent:3
+  }){
+    id
+    self{
+      id
+      name
+      email
+    }
+    opponent{
+      id
+      name
+      email
+    }
+  }
+}
+```
+
+## Message
+
+### Mutation
+
+- create new message
+```graphql
+mutation{
+  createMessage(form:{
+    body:"testing guys"
+    room_id:3
+    message_id:1
+  }){
+    id
+    sender{
+      id
+      name
+      email
+    }
+    room{
+      id
+      self{
+        id
+        name
+        email
+      }
+      opponent{
+        id
+        name
+        email
+      }
+    }
+    childs{
+      body
+      sender{
+        id
+        name
+        email
+      }
+    }
+    parent{
+      id
+      body
+      sender{
+        id
+        name
+        email
+      }
+    }
+    error
+    created_at
+    updated_at
+    status
+  }
+}
+```
+
+
+
+
+
+
+
