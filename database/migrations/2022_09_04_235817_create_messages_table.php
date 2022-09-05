@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->text('body');
-            $table->foreignId('message_id');
+            $table->foreignId('message_id')->nullable();
             $table->foreignId('room_id');
             $table->foreignId('user_id');
             $table->enum('status',['sended','received','readed']);
