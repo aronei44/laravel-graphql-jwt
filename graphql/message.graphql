@@ -1,7 +1,12 @@
 scalar DiffTime @scalar(class: "App\\GraphQL\\Scalars\\DiffTime")
 
+extend type Subscription @auth @guard {
+    newMessage(room_id: ID!): Message
+}
+
 extend type Mutation @guard @auth{
     createMessage(form: CreateMessageInput! @spread): Message
+        @broadcast(subscription: "newMessage")
 }
 
 input CreateMessageInput{
