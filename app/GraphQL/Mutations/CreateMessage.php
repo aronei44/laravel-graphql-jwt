@@ -14,6 +14,9 @@ final class CreateMessage
     public function __invoke($_, array $args)
     {
         $room = Room::find($args['room_id']);
+        if($room == null){
+            return ['error'=>'room not found'];
+        }
         if($room->user1id != auth()->user()->id && $room->user2id != auth()->user()->id){
             return ['error'=>'not your room'];
         }
