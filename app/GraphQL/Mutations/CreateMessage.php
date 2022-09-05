@@ -21,7 +21,7 @@ final class CreateMessage
         $msg = null;
         if(isset($args['message_id'])){
             $data = Message::find($args['message_id']);
-            if($data->room_id == $room->id){
+            if($data != null && $data->room_id == $room->id){
                 $msg=$args['message_id'];
             }
         }
