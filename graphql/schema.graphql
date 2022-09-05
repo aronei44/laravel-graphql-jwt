@@ -1,3 +1,4 @@
 #import auth.graphql
 #import user.graphql
 #import room.graphql
+#import message.graphql

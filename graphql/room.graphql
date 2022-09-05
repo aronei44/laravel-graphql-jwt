@@ -19,5 +19,6 @@ type Room {
     opponent: User
     updated_at: DiffTime
     created_at: DiffTime
+    messages: [Message]
     error: String
 }
