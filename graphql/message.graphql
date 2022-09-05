@@ -1,0 +1,24 @@
+scalar DiffTime @scalar(class: "App\\GraphQL\\Scalars\\DiffTime")
+
+extend type Mutation @guard @auth{
+    createMessage(form: CreateMessageInput! @spread): Message
+}
+
+input CreateMessageInput{
+    body: String! @rules(apply: ["required"])
+    room_id: Int! @rules(apply: ["required","numeric"])
+    message_id: Int @rules(apply: ["nullable","numeric"])
+}
+
+type Message {
+    id: ID
+    body: String
+    sender: User
+    room: Room
+    childs: [Message]
+    parent: Message
+    status: String
+    created_at: DiffTime
+    updated_at: DiffTime
+    error: String
+}
