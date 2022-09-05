@@ -10,7 +10,7 @@ final class Room
      */
     public function __invoke($_, array $args)
     {
-        $room = \App\Models\Room::with(['self','opponent'])->findOrFail($args['id']);
+        $room = \App\Models\Room::with(['self','opponent','messages'])->findOrFail($args['id']);
         $self = $room->self->id == auth()->user()->id ? $room->self : $room->opponent;
         $opponent = $room->self->id == auth()->user()->id ? $room->opponent : $room->self;
         $room->self = $self;

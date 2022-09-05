@@ -12,7 +12,7 @@ final class Rooms
      */
     public function __invoke($_, array $args)
     {
-        $rooms = Room::with(['self','opponent'])
+        $rooms = Room::with(['self','opponent','messages'])
                     ->where('user1id',auth()->user()->id)
                     ->orWhere('user2id',auth()->user()->id)
                     ->get();

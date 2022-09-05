@@ -17,9 +17,13 @@ final class CreateMessage
         if($room->user1id != auth()->user()->id && $room->user2id != auth()->user()->id){
             return ['error'=>'not your room'];
         }
+        $room->update(['updated_at'=>now()]);
         $msg = null;
         if(isset($args['message_id'])){
-            $msg=$args['message_id'];
+            $data = Message::find($args['message_id']);
+            if($data->room_id == $room->id){
+                $msg=$args['message_id'];
+            }
         }
         $message = Message::create([
             'body'=>$args['body'],
